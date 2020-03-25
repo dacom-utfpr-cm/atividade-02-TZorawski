@@ -24,11 +24,11 @@ public class ThreadQ4 extends Thread {
     
     @Override
     public void run () {
+        System.out.println("Thread " + Thread.currentThread().getId() + " - n1 e n2: " + n1 + n2);
         for (int i = n1; i <= n2; i++) {
             if (vetor_base[i] == procurado) {
                 posicao = i;
-                System.out.println("Posicao: " + posicao);
-                break;
+                System.out.println("Posicao encontrada: " + posicao);
             }
         }
     }

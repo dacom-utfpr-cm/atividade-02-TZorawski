@@ -7,6 +7,11 @@ import java.util.ArrayList;
  * @author thais
  */
 public class Main {
+    private int teste;
+    
+    Main () {
+        teste = 1;
+    }
     
     public void getPosicao (int procurado, int[] vetor, int num_threads) {
         ArrayList <Thread> vetor_threads = new ArrayList(); // Armazena threads de busca
@@ -24,7 +29,7 @@ public class Main {
             // Calcula posição final da busca
             int pos_final;
             if (i == num_threads -1) {
-                pos_final = vetor.length;
+                pos_final = vetor.length - 1;
             } else {
                 pos_final = (i * fator_divisao) + fator_divisao;
             }
@@ -37,16 +42,19 @@ public class Main {
             t.start();
         }
         
-        for (int i = 0; i < num_threads; i++) {
-            System.out.println(vetor_threads.get(i).getState());
-        }
+        // Não funcionou
+//        for (int i = 0; i < num_threads; i++) {
+//            System.out.println(vetor_threads.get(i).getPosicao());
+//        }
     }
     public static void main(String[] args) {
-        int[] vetor = {10, 11, 12, 13, 14, 15, 16, 17, 18, 18, 20, 12, 34};
-        this.getPosicao(10, vetor, 2);
+        int[] vetor = {10, 11, 12, 13, 14, 15, 16, 17, 18, 18, 20, 12, 34, 2, 3, 4, 5, 6, 7, 7 , 8, 9, 0, 19, 22, 23, 24, 12, 3, 4, 5, 6, 7, 8, 8, 9, 12, 11};
+        
+        Main m = new Main();
+        m.getPosicao(7, vetor, 3); // Parâmetros: número procurado, vetor, número de threads
         
         // Dados para teste
-//        ThreadQ4 t = new ThreadQ4(12, vetor, 5, vetor.length - 1);
+//        ThreadQ4 t = new ThreadQ4(12, vetor, 5, vetor.length - 1); // Parâmetros: número procurado, vetor, posição inicial e final
 //        t.start();
     }
 }
